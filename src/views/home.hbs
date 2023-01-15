@@ -1,0 +1,55 @@
+<div class="container">
+    <form id="myForm" method="post">
+        <div class="form-group mx-sm-3 mb-2 h1">
+            <label for="datepicker">Date</label>
+        </div>
+        <input type="text" id="datepicker" class="form-control-lg w-50" required>
+
+        <button type="submit" class="btn btn-lg btn-primary mb-2">Confirm identity</button>
+    </form>
+
+    {{#each offers.offers}}
+
+    <div class="row mt-2 border border-primary rounded">
+        <div class="col">Img</div>
+        <div class="col-8">
+            <div class="h4">{{this.title}}</div>
+            <div >{{this.description}}</div>
+            
+
+        </div>
+        
+        <div class="col-3">
+            {{#each merchants}}
+            <div class="h5">Merchant {{this.id}}</div>
+            <div>Distance: {{this.distance}}</div>
+            {{/each}}
+        </div>
+    
+    </div>
+    {{/each}}
+
+
+</div>
+
+<script>
+
+    $("#datepicker").datepicker({ dateFormat: "yy-mm-dd" });
+
+    $('#myForm').on('submit', function (e) {
+        let date = $('#datepicker').val();
+
+        $.ajax({
+                url: '/',
+                type: 'POST',
+                data: {
+                    date: date,
+                }
+            }).done(function(res) {
+                $('body').html(res);
+            });
+
+        e.preventDefault()
+        
+    })
+</script>
