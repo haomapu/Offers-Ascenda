@@ -7,7 +7,7 @@ router.get("/", offerController.getAllOffer);
 
 router.post("/", offerController.getFilterOffer);
 
-router.get("/api/filter", offerController.apiFilter);
+router.post("/api/filter", offerController.apiFilter);
 
 router.get("/api/all", offerController.apiAll);
 

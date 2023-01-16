@@ -60,8 +60,9 @@ const offerController = {
     },
     
     apiFilter: async (req, res) => {
+        console.log("Hello")
         let fetch = await apiService.fetchAPI();
-        let date = new Date('2020-04-12');
+        let date = new Date(req.body.date);
         let offers = fetch.offers;
         const oneDay = 86400000;
         for (let i = 0; i < offers.length; i++){
@@ -97,8 +98,7 @@ const offerController = {
                 break;
             }
         }
-
-        res.send({offers: result});        
+        res.status(200).json({offers: result});     
     }
 }
 
