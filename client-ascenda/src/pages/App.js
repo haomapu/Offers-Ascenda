@@ -1,7 +1,7 @@
 import Offers from '../services/offers.js'
 import React, { Component } from 'react';
-import Offer from './offer/offer.js'
-import DateForm from './dateForm/dateForm.js';
+import Offer from '../components/offer/offer.js'
+import DateForm from '../components/dateForm/dateForm.js';
 import ObserverService, {OFFER_CHANGED} from '../services/observer.js';
 const offers = new Offers();
 
